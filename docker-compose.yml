@@ -1,0 +1,40 @@
+services:
+  backend:
+    container_name: backend
+    image: node:18
+    working_dir: /app
+    volumes:
+      - ./backend:/app
+      - sqlite-data:/app/data
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+        # npx prisma init &&
+        # npx prisma generate &&
+    command: >
+      sh -c "
+        npm install -g @nestjs/cli &&
+        npm install &&
+        npm install prisma --save-dev &&
+        npm install @prisma/client &&
+        tail -f /dev/null
+      "
+
+  frontend:
+    container_name: frontend
+    image: node:18
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173"
+    command: >
+      sh -c "
+        npm install && npm install react-router-dom &&
+        npm install @mui/material @emotion/react @emotion/styled @mui/icons-material &&
+        tail -f /dev/null
+      "
+
+volumes:
+  sqlite-data:
