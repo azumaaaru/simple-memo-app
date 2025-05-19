@@ -41,7 +41,7 @@ React + MUI によるシンプルなメモアプリです。<br>
 
 ## 💾 バックエンドDBテーブル定義（概要）
 
-メモデータは以下のような構造です。詳細は[バックエンドリポジトリ](https://github.com/yourname/backend-repo)のドキュメントを参照してください。
+メモデータは以下のような構造です。
 
 ```prisma
 model Note {
